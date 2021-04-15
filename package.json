@@ -1,0 +1,30 @@
+{
+  "name": "game-masseffectlegendaryedition",
+  "version": "0.0.2",
+  "description": "Adds support for Mass Effect Legendary Edition to Vortex",
+  "scripts": {
+    "webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js --display-error-details --progress --profile --color",
+    "copy_assets": "copyfiles -f assets/* dist && copyfiles -f assets/content/* dist/content",
+    "bundle7z": "del game-masseffectlegendaryedition.7z && 7z a -t7z game-masseffectlegendaryedition.7z .\\dist\\*",
+    "build": "yarn run webpack && yarn run copy_assets && extractInfo && json -f dist\\info.json -I -e \"this.name=\\\"Game: Mass Effect Legendary Edition\\\"\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nexus-Mods/game-masseffectlegendaryedition.git"
+  },
+  "author": "The Mass Effect Community",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Nexus-Mods/game-masseffectlegendaryedition/issues"
+  },
+  "homepage": "https://github.com/Nexus-Mods/game-masseffectlegendaryedition#readme",
+  "devDependencies": {
+    "copyfiles": "^2.1.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^4.2.4",
+    "json": "^9.0.6",
+    "vortex-api": "Nexus-Mods/vortex-api",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
